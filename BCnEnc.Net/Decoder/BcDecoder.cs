@@ -265,7 +265,7 @@ namespace BCnEncoder.Decoder
 		/// <param name="pixelHeight">The pixelHeight of the image.</param>
 		/// <param name="format">The Format the encoded data is in.</param>
 		/// <returns>The decoded image.</returns>
-		public ColorRgba32[] DecodeRaw(byte[] input, int pixelWidth, int pixelHeight, CompressionFormat format)
+		public ColorRgba32[] DecodeRaw(ReadOnlyMemory<byte> input, int pixelWidth, int pixelHeight, CompressionFormat format)
 		{
 			return DecodeRawInternal(input, pixelWidth, pixelHeight, format, default);
 		}
@@ -337,7 +337,7 @@ namespace BCnEncoder.Decoder
 		/// <param name="pixelHeight">The pixelHeight of the image.</param>
 		/// <param name="format">The Format the encoded data is in.</param>
 		/// <returns>The decoded image.</returns>
-		public Memory2D<ColorRgba32> DecodeRaw2D(byte[] input, int pixelWidth, int pixelHeight, CompressionFormat format)
+		public Memory2D<ColorRgba32> DecodeRaw2D(ReadOnlyMemory<byte> input, int pixelWidth, int pixelHeight, CompressionFormat format)
 		{
 			var decoded = DecodeRawInternal(input, pixelWidth, pixelHeight, format, default);
 			return decoded.AsMemory().AsMemory2D(pixelHeight, pixelWidth);
